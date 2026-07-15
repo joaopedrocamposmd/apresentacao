@@ -73,7 +73,7 @@
     text-wrap: balance;
   }
   h1 em { font-style: normal; font-weight: 600; color: var(--color-primary); }
-  .lede { font-size: 18px; color: var(--ink-soft); max-width: 62ch; margin: 0 0 8px; }
+  .lede { font-size: 18px; color: var(--ink-soft); margin: 0 0 8px; }
   .lede strong { color: var(--ink); font-weight: 600; }
 
   .kpis {
@@ -133,7 +133,7 @@
     margin: 0 0 14px; text-wrap: balance;
   }
   h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-  section > .wrap > p { color: var(--ink-soft); max-width: 68ch; }
+  section > .wrap > p { color: var(--ink-soft); }
   section > .wrap > p strong { color: var(--ink); font-weight: 600; }
 
   .glass {
@@ -191,7 +191,7 @@
   details.layer[open] > summary::before { transform: rotate(45deg); }
   details.layer > summary:hover { background: var(--bg-tint); }
   details.layer .layer-body { padding: 4px 20px 20px; border-top: 1px solid var(--rule-soft); }
-  details.layer .layer-body p { font-size: 14.5px; color: var(--ink-soft); max-width: 72ch; }
+  details.layer .layer-body p { font-size: 14.5px; color: var(--ink-soft); }
   details.layer .layer-body ul { font-size: 14.5px; color: var(--ink-soft); padding-left: 20px; }
   details.layer .layer-body li { margin-bottom: 6px; }
   details.layer .layer-body li::marker { color: var(--color-primary); }
@@ -226,7 +226,7 @@
     background: rgba(59,135,123,0.07);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: 14px 18px; margin: 20px 0;
-    font-size: 15px; color: var(--ink-soft); max-width: 72ch;
+    font-size: 15px; color: var(--ink-soft);
   }
   .callout strong { color: var(--ink); }
   .callout.commit { border-left-color: var(--pos); background: rgba(46,204,113,0.07); }
@@ -307,7 +307,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="brand" aria-label="UBNIC">
+    <a class="brand" href="https://ubnic.com" aria-label="UBNIC">
       <svg class="brand-logo" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M28 30 V50 C28 75 40 82 50 82 C60 82 72 75 72 50 V30" stroke="#3b877b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="28" cy="30" r="7" fill="#3b877b" stroke="#f4f7f6" stroke-width="2.5"/>
@@ -315,10 +315,10 @@
         <circle cx="72" cy="30" r="7" fill="#3b877b" stroke="#f4f7f6" stroke-width="2.5"/>
         <text x="95" y="68" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="42" letter-spacing="-1" fill="#2c3e50">UBNIC</text>
       </svg>
-    </span>
+    </a>
     <p class="eyebrow">Proposta de integração institucional · Hospital Pedro Hispano — ULS Matosinhos</p>
     <h1>Medir os resultados da cirurgia do joelho, <em>como ferramenta do hospital</em></h1>
-    <p class="lede">O UBNIC é um sistema de informação clínica para registo estruturado, seguimento longitudinal e medição de resultados reportados pelos doentes (PROMs), desenvolvido pela Equipa de Joelho do Serviço de Ortopedia. Foi concebido de raiz como <strong>ferramenta institucional</strong>: propomos a sua integração na ULS Matosinhos, começando por uma fase-piloto de avaliação na consulta de joelho.</p>
+    <p class="lede">O UBNIC é um sistema de informação clínica para registo estruturado, seguimento longitudinal e medição de resultados reportados pelos doentes (PROMs), desenvolvido pela <strong>Ubnic (CPS Concept LDA)</strong>. A Equipa de Joelho do Serviço de Ortopedia reconhece o seu valor e propõe a sua adoção institucional — para aplicar eficazmente os seus protocolos, avaliar os seus procedimentos e produzir ciência de qualidade — começando por uma fase-piloto na própria equipa.</p>
     <ul class="kpis" aria-label="Indicadores">
       <li><span class="num">100%</span><span class="lbl">Doentes da consulta abrangidos</span></li>
       <li><span class="num">0 papel</span><span class="lbl">Sem consentimentos por doente*</span></li>
@@ -326,7 +326,7 @@
       <li><span class="num">AES-256-GCM</span><span class="lbl">Encriptação campo a campo</span></li>
       <li><span class="num">12–24 meses</span><span class="lbl">Fase-piloto proposta</span></li>
     </ul>
-    <p style="font-size:12px;color:var(--ink-muted);margin:6px 0 0;">* Na integração plena, o tratamento assenta na prestação de cuidados (Art. 9.º-2-h RGPD), como os restantes sistemas do hospital. Regime da fase-piloto em clarificação com a equipa de proteção de dados.</p>
+    <p style="font-size:12px;color:var(--ink-muted);margin:6px 0 0;">* Na integração plena, o tratamento assenta na prestação de cuidados (Art. 9.º-2-h RGPD), como os restantes sistemas do hospital. Regime da fase-piloto a definir com a equipa de proteção de dados.</p>
   </div>
 </header>
 
@@ -340,7 +340,6 @@
       <a href="#tecnico">Arquitetura e integrações</a>
       <a href="#dados">Proteção de dados</a>
       <a href="#transparencia">Transparência</a>
-      <a href="#roadmap">Percurso</a>
       <a href="#equipa">Equipa</a>
     </div>
   </div>
@@ -405,7 +404,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">02 · Modelo de integração</p>
     <h2>Uma ferramenta do hospital, com os dados nas mãos do hospital</h2>
-    <p>O UBNIC funciona no mesmo enquadramento dos restantes sistemas de informação do hospital: a <strong>ULS Matosinhos é a responsável pelo tratamento</strong> dos dados, define as políticas e o alojamento; a CPS Concept LDA fornece e mantém o software, como subcontratante. O enquadramento foi alinhado com a equipa de proteção de dados do HPH.</p>
+    <p>O UBNIC funciona no mesmo enquadramento dos restantes sistemas de informação do hospital: a <strong>ULS Matosinhos é a responsável pelo tratamento</strong> dos dados, define as políticas e o alojamento; a CPS Concept LDA fornece e mantém o software, como subcontratante.</p>
 
     <div class="tbl-wrap"><table>
       <thead><tr><th>Trave-mestra</th><th>Como funciona</th></tr></thead>
@@ -422,7 +421,7 @@
         <tr><td>Crescimento</td><td>Preparada para alargar a outras especialidades cirúrgicas e a outros hospitais</td></tr>
       </tbody>
     </table></div>
-    <p style="font-size:12.5px;color:var(--ink-muted);">* Regime de consentimento durante a fase-piloto em clarificação com a equipa de proteção de dados.</p>
+    <p style="font-size:12.5px;color:var(--ink-muted);">* Regime de consentimento durante a fase-piloto a definir com a equipa de proteção de dados.</p>
 
     <div class="glass arch" aria-label="Modelo de responsabilidades">
       <div class="arch-row">
@@ -442,13 +441,13 @@
   <div class="wrap">
     <p class="sec-eyebrow">03 · Fase-piloto</p>
     <h2>12–24 meses na Equipa de Joelho, com avaliação objetiva</h2>
-    <p>Propomos começar pequeno e medir: um piloto circunscrito à consulta de joelho do Serviço de Ortopedia, formalizado por <strong>protocolo de colaboração</strong> entre a ULS Matosinhos e a CPS Concept LDA, com critérios de avaliação definidos à partida e relatório final ao Conselho de Administração.</p>
+    <p>Propomos começar pequeno e medir: um piloto circunscrito aos doentes da Equipa de Joelho do Serviço de Ortopedia, formalizado por <strong>protocolo de colaboração</strong> entre a ULS Matosinhos e a CPS Concept LDA, com critérios de avaliação definidos à partida e relatório final ao Conselho de Administração.</p>
 
     <div class="grid2">
       <div class="glass card">
         <h3>Âmbito e condições propostas</h3>
         <ul>
-          <li>Consulta de joelho, Equipa de Joelho — ~50–200 doentes</li>
+          <li>Todos os doentes seguidos pela Equipa de Joelho — consulta, inscrição cirúrgica e seguimento pós-operatório (~50–200 doentes/ano)</li>
           <li>Duração: 12–24 meses, com avaliação intercalar</li>
           <li><strong>Sem custos de licenciamento durante o piloto</strong></li>
           <li>Protocolo com anexo de proteção de dados (papéis, medidas, auditoria)</li>
@@ -469,7 +468,7 @@
     </div>
 
     <div class="callout">
-      <strong>Consentimento durante o piloto:</strong> sendo uma ferramenta institucional em avaliação, o tratamento enquadra-se na prestação de cuidados (Art. 9.º-2-h). Está em clarificação com a equipa de proteção de dados se a fase-piloto exige consentimento adicional dos utentes e, em caso afirmativo, em que formato (idealmente digital, registado na própria aplicação — sem papel).
+      <strong>Consentimento durante o piloto:</strong> sendo uma ferramenta institucional em avaliação, o tratamento enquadra-se na prestação de cuidados (Art. 9.º-2-h). Ficará definido com a equipa de proteção de dados se a fase-piloto exige consentimento adicional dos utentes e, em caso afirmativo, em que formato (idealmente digital, registado na própria aplicação — sem papel).
     </div>
   </div>
 </section>
@@ -579,7 +578,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">06 · Proteção de dados</p>
     <h2>Desenhado com a proteção de dados primeiro — e revisto com ela</h2>
-    <p>Antes de existir qualquer dado real, o projeto produziu a avaliação de impacto (AIPD/DPIA), o registo de atividades (ROPA), políticas de retenção, procedimentos de violação de dados e de direitos dos titulares — tudo com <strong>revisão jurídica externa</strong>. O enquadramento foi discutido com a equipa de proteção de dados do HPH e a documentação será formalizada com a ULSM como responsável pelo tratamento.</p>
+    <p>Antes de existir qualquer dado real, o projeto produziu a avaliação de impacto (AIPD/DPIA), o registo de atividades (ROPA), políticas de retenção, procedimentos de violação de dados e de direitos dos titulares — tudo com <strong>revisão jurídica externa</strong>. Na adoção institucional, a documentação será formalizada com a ULSM como responsável pelo tratamento, em articulação com a equipa de proteção de dados do hospital.</p>
 
     <div class="cards3">
       <div class="glass card">
@@ -618,50 +617,10 @@
   </div>
 </section>
 
-<!-- ============ ROADMAP ============ -->
-<section id="roadmap">
-  <div class="wrap">
-    <p class="sec-eyebrow">08 · Percurso</p>
-    <h2>Onde estamos e o que se segue</h2>
-    <div class="flow">
-      <div class="step done">
-        <div>
-          <h3>Reunião com a equipa de proteção de dados do HPH <span class="pill ok">CONCLUÍDA</span></h3>
-          <p>O modelo institucional aqui apresentado — ULSM como responsável pelo tratamento, base legal na prestação de cuidados — foi alinhado com as orientações da equipa de proteção de dados.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h3>Reunião com a DSI <span class="pill warn">PRÓXIMO PASSO</span></h3>
-          <p>Avaliar as opções de alojamento (on-prem vs. serviço gerido) e as integrações — agenda, canais de comunicação institucionais, autenticação.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h3>Apresentação ao Conselho de Administração</h3>
-          <p>Proposta de piloto com declaração de interesses, parecer da equipa de proteção de dados e enquadramento da DSI.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h3>Protocolo de colaboração e arranque do piloto</h3>
-          <p>Protocolo ULSM ↔ CPS Concept com anexo de proteção de dados; atualização da AIPD/ROPA com a ULSM como responsável; formação da equipa; arranque na consulta de joelho.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h3>Avaliação e decisão</h3>
-          <p>Relatório final ao CA com os critérios medidos. Decisão de integração plena — e, a prazo, alargamento a outras equipas, serviços e hospitais, com interoperabilidade entre instituições.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ EQUIPA ============ -->
 <section id="equipa">
   <div class="wrap">
-    <p class="sec-eyebrow">09 · Equipa</p>
+    <p class="sec-eyebrow">08 · Equipa</p>
     <h2>Equipa de Joelho — Serviço de Ortopedia e Traumatologia, HPH</h2>
     <div class="team">
       <div class="glass member">
@@ -694,7 +653,7 @@
         <div class="nm">CPS Concept LDA</div>
         <div class="rl">Fornecedor de software · Subcontratante</div>
         <div class="om">NIF 516286153</div>
-        <div class="tag"><span class="pill">privacy@ubnic.com</span></div>
+        <div class="tag"><span class="pill">dr.joaopedro.campos@gmail.com</span></div>
       </div>
     </div>
   </div>
@@ -704,7 +663,7 @@
   <div class="wrap">
     <div class="frow">
       <span><strong>UBNIC</strong> · Proposta de integração institucional — Equipa de Joelho, HPH / ULS Matosinhos</span>
-      <span>Contacto: Dr. João Pedro Campos · <a href="mailto:privacy@ubnic.com">privacy@ubnic.com</a> · <span class="mono">+351 910 955 766</span></span>
+      <span>Contacto: Dr. João Pedro Campos · <a href="mailto:dr.joaopedro.campos@gmail.com">dr.joaopedro.campos@gmail.com</a> · <span class="mono">+351 910 955 766</span></span>
       <span>CPS Concept LDA · NIF <span class="mono">516286153</span></span>
     </div>
   </div>
