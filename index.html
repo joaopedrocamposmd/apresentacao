@@ -327,7 +327,7 @@
       <li><span class="num">AES-256-GCM</span><span class="lbl">Encriptação campo a campo</span></li>
       <li><span class="num">12–24 meses</span><span class="lbl">Fase-piloto proposta</span></li>
     </ul>
-    <p style="font-size:12px;color:var(--ink-muted);margin:6px 0 0;">* Na integração plena, o tratamento assenta na prestação de cuidados (Art. 9.º-2-h RGPD), como os restantes sistemas do hospital. Regime da fase-piloto a definir com a equipa de proteção de dados.</p>
+    <p style="font-size:12px;color:var(--ink-muted);margin:6px 0 0;">* Na integração plena, o tratamento assenta na prestação de cuidados (Art. 9.º-2-h RGPD), como os restantes sistemas do hospital. Na fase-piloto (validação), por orientação escrita da equipa de proteção de dados, o consentimento é formalizado em papel ao abrigo do Art. 9.º/2 j) e, depois de assinado, arquivado digitalmente na própria aplicação.</p>
   </div>
 </header>
 
@@ -416,13 +416,13 @@
         <tr><td>Consentimento por doente</td><td>Não necessário na integração plena* — sem papel, sem atrito, sem viés de seleção</td></tr>
         <tr><td>Comunicações com o doente</td><td>Canais institucionais do hospital (SMS/email), ligadas à consulta agendada</td></tr>
         <tr><td>Registo clínico primário</td><td>SClínico, sempre — cada registo relevante no UBNIC gera cópia em texto para o SClínico</td></tr>
-        <tr><td>Alojamento</td><td>Definido pelo hospital, em avaliação com a DSI — datacenter da ULSM ou serviço gerido</td></tr>
+        <tr><td>Alojamento</td><td>Definido pelo hospital, em avaliação com a DTI — datacenter da ULSM ou serviço gerido</td></tr>
         <tr><td>Abrangência</td><td>Todos os doentes da consulta — dados de outcomes sem viés de seleção</td></tr>
         <tr><td>Investigação e publicações</td><td>Estudos pontuais sobre os dados, cada um com parecer da Comissão de Ética — circuito normal</td></tr>
         <tr><td>Crescimento</td><td>Preparada para alargar a outras especialidades cirúrgicas e a outros hospitais</td></tr>
       </tbody>
     </table></div>
-    <p style="font-size:12.5px;color:var(--ink-muted);">* Regime de consentimento durante a fase-piloto a definir com a equipa de proteção de dados.</p>
+    <p style="font-size:12.5px;color:var(--ink-muted);">* Na fase-piloto (validação): consentimento em papel (Art. 9.º/2 j)), arquivado digitalmente na aplicação após assinatura — orientação escrita da equipa de proteção de dados.</p>
 
     <div class="glass arch" aria-label="Modelo de responsabilidades">
       <div class="arch-row">
@@ -469,7 +469,7 @@
     </div>
 
     <div class="callout">
-      <strong>Consentimento durante o piloto:</strong> sendo uma ferramenta institucional em avaliação, o tratamento enquadra-se na prestação de cuidados (Art. 9.º-2-h). Ficará definido com a equipa de proteção de dados se a fase-piloto exige consentimento adicional dos utentes e, em caso afirmativo, em que formato (idealmente digital, registado na própria aplicação — sem papel).
+      <strong>Consentimento durante o piloto:</strong> por orientação escrita da equipa de proteção de dados, a fase-piloto enquadra-se como investigação para validação da aplicação (Art. 9.º/2 j)) e o consentimento dos utentes é formalizado <strong>em papel</strong>; depois de assinado, é <strong>arquivado digitalmente na própria aplicação</strong>, associado ao registo do doente. Na utilização institucional plena, o tratamento passa a assentar na prestação de cuidados (Art. 9.º-2-h), com dever de informação assegurado pelo médico e pela divulgação institucional.
     </div>
   </div>
 </section>
@@ -522,7 +522,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">05 · Arquitetura e integrações</p>
     <h2>Preparado para correr onde o hospital decidir</h2>
-    <p>A aplicação é <strong>contentorizada e agnóstica à infraestrutura</strong>: corre integralmente em Docker numa única máquina virtual. A decisão de alojamento — datacenter da ULSM (on-prem) ou serviço gerido pela CPS Concept com DPA — fica em aberto para avaliação conjunta com a DSI, sem alterar a aplicação.</p>
+    <p>A aplicação é <strong>contentorizada e agnóstica à infraestrutura</strong>: corre integralmente em Docker numa única máquina virtual. A decisão de alojamento — datacenter da ULSM (on-prem) ou serviço gerido pela CPS Concept com DPA — fica em aberto para avaliação conjunta com a DTI, sem alterar a aplicação.</p>
 
     <div class="grid2">
       <div class="glass card">
@@ -531,14 +531,14 @@
           <li>Dados fisicamente dentro do hospital</li>
           <li>VM única: 4 vCPU, 8–16 GB RAM, ~100 GB — requisitos modestos</li>
           <li>Rede interna; sem exposição à internet exceto o acesso dos doentes aos PROMs</li>
-          <li>CPS Concept faz manutenção aplicacional mediante acesso acordado com a DSI</li>
+          <li>CPS Concept faz manutenção aplicacional mediante acesso acordado com a DTI</li>
         </ul>
       </div>
       <div class="glass card">
         <h3>Opção B — Serviço gerido (CPS Concept)</h3>
         <ul>
           <li>Alojamento em Portugal, operado como subcontratante com DPA (Art. 28.º)</li>
-          <li>Zero esforço de infraestrutura para a DSI</li>
+          <li>Zero esforço de infraestrutura para a DTI</li>
           <li>Encriptação campo a campo — dados ilegíveis mesmo com acesso à máquina</li>
           <li>Auditoria e backups já implementados e testados</li>
         </ul>
@@ -560,7 +560,7 @@
     </details>
 
     <details class="layer">
-      <summary>Detalhe técnico — integrações a discutir com a DSI</summary>
+      <summary>Detalhe técnico — integrações a discutir com a DTI</summary>
       <div class="layer-body">
         <p>Nenhuma integração é bloqueante para o arranque do piloto — há modo degradado manual para todas. Por ordem de valor:</p>
         <ul>
