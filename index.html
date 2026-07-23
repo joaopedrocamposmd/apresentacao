@@ -211,6 +211,11 @@
   tr:last-child td { border-bottom: none; }
   td:first-child { color: var(--ink); font-weight: 500; }
 
+  .tbl-journey table { min-width: 980px; }
+  .tbl-journey td { font-size: 13px; }
+  .tbl-journey td:first-child { min-width: 150px; }
+  .tbl-journey td .pill { margin-top: 4px; }
+
   .pill {
     display: inline-block; padding: 2px 10px; border-radius: 999px;
     font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
@@ -325,6 +330,7 @@
       <li><span class="num">0 papel</span><span class="lbl">Sem consentimentos por doente*</span></li>
       <li><span class="num">PROMs automáticos</span><span class="lbl">Pelos canais do hospital</span></li>
       <li><span class="num">AES-256-GCM</span><span class="lbl">Encriptação campo a campo</span></li>
+      <li><span class="num">30 fases</span><span class="lbl">Protocolo PTJ já operacionalizado</span></li>
       <li><span class="num">12–24 meses</span><span class="lbl">Fase-piloto proposta</span></li>
     </ul>
     <p style="font-size:12px;color:var(--ink-muted);margin:6px 0 0;">* Na integração plena, o tratamento assenta na prestação de cuidados (Art. 9.º-2-h RGPD), como os restantes sistemas do hospital. Na fase-piloto (validação), por orientação escrita da equipa de proteção de dados, o consentimento é formalizado em papel ao abrigo do Art. 9.º/2 j) e, depois de assinado, arquivado digitalmente na própria aplicação.</p>
@@ -338,8 +344,10 @@
       <a href="#modelo">Modelo de integração</a>
       <a href="#piloto">Fase-piloto</a>
       <a href="#plataforma">Plataforma</a>
+      <a href="#percurso">Percurso do doente</a>
       <a href="#tecnico">Arquitetura e integrações</a>
       <a href="#dados">Proteção de dados</a>
+      <a href="#saida">Que dados saem?</a>
       <a href="#transparencia">Transparência</a>
       <a href="#equipa">Equipa</a>
     </div>
@@ -479,20 +487,20 @@
   <div class="wrap">
     <p class="sec-eyebrow">04 · Plataforma</p>
     <h2>No mesmo registo, o percurso cirúrgico completo</h2>
-    <p>Para medir PROMs, a aplicação acompanha necessariamente as consultas, a inscrição cirúrgica (LIC) e as cirurgias. Com esses dados no sistema, o mesmo registo sustenta — sem recolha adicional — um conjunto de capacidades de gestão do percurso cirúrgico:</p>
+    <p>Para medir PROMs, a aplicação acompanha necessariamente as consultas, a inscrição cirúrgica (LIC) e as cirurgias. Com esses dados no sistema, o mesmo registo sustenta — sem recolha adicional — um conjunto de capacidades de gestão do percurso cirúrgico. Estas capacidades <strong>já não são intenções</strong>: estão construídas e em uso pela equipa no desenvolvimento da aplicação.</p>
 
     <div class="mini-grid">
       <div class="mini">
-        <h3>Protocolos institucionais aplicados na prática</h3>
-        <p>Os dados a colher em consulta, os exames a pedir na inscrição cirúrgica e o percurso perioperatório completo — com todos os intervenientes — deixam de ser documentos e passam a passos guiados no registo, iguais para toda a equipa.</p>
+        <h3>Protocolos institucionais, versionados e com aprovação formal</h3>
+        <p>Cada protocolo segue um circuito de aprovação — rascunho, revisão, aprovado — em que a versão aprovada é imutável e cada transição fica registada em trilho de auditoria. O protocolo perioperatório da PTJ do serviço já está operacionalizado na aplicação: 30 fases do percurso, medicação, elegibilidade ambulatória e seguimento.</p>
       </div>
       <div class="mini">
         <h3>Gestão da lista de inscritos com mais indicadores</h3>
         <p>Estado da preparação pré-operatória de cada doente (exames, otimização, elegibilidade ambulatória), tempos de espera e prioridades — para além do que a LIC tradicional mostra.</p>
       </div>
       <div class="mini">
-        <h3>Pedidos de material</h3>
-        <p>Associados à cirurgia agendada e à técnica prevista (implantes standard vs. complexos, definidos em protocolo), com rastreabilidade do pedido à utilização.</p>
+        <h3>Catálogo clínico e materiais do bloco</h3>
+        <p>Um catálogo clínico com 315 elementos descritivos e a gestão dos materiais do bloco — inventário, caixas de artroscopia, concursos ingeridos tal como publicados — alimentam os protocolos e os pedidos de material associados a cada cirurgia, com rastreabilidade do pedido à utilização.</p>
       </div>
       <div class="mini">
         <h3>Relatórios de atividade parametrizáveis</h3>
@@ -501,26 +509,112 @@
     </div>
 
     <details class="layer">
-      <summary>Exemplo — protocolo PTJ (prótese total do joelho), já desenhado pela equipa</summary>
+      <summary>Exemplo — protocolo PTJ (prótese total do joelho), já operacionalizado na aplicação</summary>
       <div class="layer-body">
-        <p>O protocolo perioperatório da PTJ, elaborado pela Equipa de Joelho com base em evidência (ERAS 2020, CHEST 2022, ESAIC 2022, DGS 026/2012), ilustra o que a plataforma operacionaliza:</p>
+        <p>O protocolo perioperatório da PTJ, elaborado pela Equipa de Joelho com base em evidência (ERAS 2020, CHEST 2022, ESAIC 2022, DGS 026/2012), está carregado e aprovado na aplicação e ilustra o que a plataforma operacionaliza:</p>
         <ul>
+          <li><strong>Percurso em 30 fases:</strong> do pré-operatório à alta e domicílio, com as ações de cada interveniente — cirurgião, anestesiologia, enfermagem, fisioterapia — e a variante de ambulatório.</li>
           <li><strong>Dados cirúrgicos e material:</strong> implantes standard e de constrição (com critérios de escolha), requisitos pré-operatórios (ex.: HbA1c, função renal) verificados na inscrição.</li>
+          <li><strong>Medicação perioperatória:</strong> esquemas definidos no protocolo, apresentados a cada interveniente no momento certo.</li>
           <li><strong>Consentimento informado estruturado:</strong> diagnóstico, procedimento, benefícios, riscos quantificados e alternativas, gerado a partir do protocolo.</li>
           <li><strong>Elegibilidade ambulatória:</strong> critérios sociais e clínicos avaliados de forma sistemática na consulta de decisão.</li>
-          <li><strong>Percurso em 8 fases, ~50 passos:</strong> do pré-operatório à alta e domicílio, com as ações de cada interveniente — cirurgião, anestesiologia, enfermagem, fisioterapia — e a variante de ambulatório.</li>
-          <li><strong>Pós-operatório:</strong> sinais de alarme, medidas graduadas e programa de fisioterapia, que alimentam a comunicação com o doente.</li>
+          <li><strong>Seguimento:</strong> sinais de alarme, medidas graduadas, programa de fisioterapia e calendário de PROMs pós-operatórios, que alimentam a comunicação com o doente.</li>
         </ul>
-        <p>A plataforma é agnóstica à especialidade: os protocolos são configuráveis, pelo que o alargamento a outras equipas cirúrgicas não exige desenvolvimento novo.</p>
+        <p>A plataforma é agnóstica à especialidade: os protocolos são configuráveis, pelo que o alargamento a outras equipas cirúrgicas não exige desenvolvimento novo. A aplicação organiza a informação e operacionaliza os protocolos aprovados pelo serviço — a decisão clínica é sempre dos profissionais.</p>
       </div>
     </details>
+  </div>
+</section>
+
+<!-- ============ PERCURSO DO DOENTE ============ -->
+<section id="percurso">
+  <div class="wrap">
+    <p class="sec-eyebrow">05 · Percurso do doente</p>
+    <h2>Da efetivação da consulta à alta — quem faz o quê, e onde</h2>
+    <p>O quadro seguinte percorre o percurso típico de um doente cirúrgico (ex.: prótese total do joelho) e mostra, em cada momento, o papel do <strong>utente</strong>, dos <strong>profissionais</strong>, do <strong>SClínico</strong> e das <strong>restantes aplicações do hospital</strong>. O núcleo da aplicação é a recolha sistemática de PROMs e o registo estruturado <span class="pill ok">núcleo</span>; sobre essa mesma informação, a aplicação operacionaliza os protocolos assinados do serviço <span class="pill">extra</span>. O SClínico mantém-se sempre o registo clínico oficial — a aplicação não o substitui, gera texto estruturado para nele ser colado.</p>
+
+    <div class="tbl-wrap tbl-journey"><table>
+      <thead><tr><th>Momento</th><th>Utente</th><th>Profissionais</th><th>SClínico</th><th>Aplicações do hospital</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1 · Efetivação da consulta <span class="pill ok">núcleo</span></td>
+          <td>Recebe por SMS a ligação ao questionário — genérico ou adaptado ao tema da consulta — e responde no telemóvel, sem palavra-passe.</td>
+          <td>—</td>
+          <td>Consulta efetivada na agenda, como hoje.</td>
+          <td>Envio pela aplicação de SMS institucional (integração a validar com a DTI).</td>
+        </tr>
+        <tr>
+          <td>2 · Sala de espera <span class="pill ok">núcleo</span></td>
+          <td>Termina o questionário, se ainda não o fez.</td>
+          <td>O painel do médico mostra o estado de cada utente: presente · a responder · respondido.</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>3 · Consulta <span class="pill ok">núcleo</span></td>
+          <td>Consulta apoiada na informação que o próprio forneceu.</td>
+          <td>Registo rápido e estruturado das observações; a decisão é, como sempre, do médico.</td>
+          <td>A aplicação gera o texto do registo, que o médico cola no SClínico — o registo oficial.</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>4 · Proposta de cirurgia <span class="pill">extra</span></td>
+          <td>Recebe, impressos a partir do protocolo, a informação sobre a cirurgia e o consentimento informado.</td>
+          <td>Proposta registada de forma estruturada (ex.: PTJ direita, material NexGen, conforme protocolo).</td>
+          <td>Proposta e consentimento seguem o circuito oficial.</td>
+          <td>Requisição do estudo pré-operatório e inscrição na LIC, preparadas segundo o protocolo.</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="background:rgba(59,135,123,0.06);">
+            <strong style="color:var(--color-primary-dark);font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">Extra — além dos PROMs</strong><br>
+            No momento da decisão, a aplicação integra o necessário segundo os protocolos assinados do serviço: requisição do estudo pré-operatório, inscrição na LIC, impressão da informação ao utente e do consentimento informado. Um só registo estruturado, todos os passos do protocolo.
+          </td>
+        </tr>
+        <tr>
+          <td>5 · Agendamento <span class="pill">extra</span> <span class="pill ok">núcleo</span></td>
+          <td>Se a data cirúrgica ficar a mais de 8 semanas do questionário recolhido, recebe automaticamente novo questionário — o resultado pré-operatório fica sempre atual.</td>
+          <td>O secretariado agenda com a informação estruturada à vista: elegibilidade ambulatória, requisitos do protocolo, prioridade.</td>
+          <td>—</td>
+          <td>Agendamento cirúrgico nos sistemas habituais.</td>
+        </tr>
+        <tr>
+          <td>6 · Consulta pré-operatória (enfermagem / MFR) <span class="pill">extra</span></td>
+          <td>Recebe ensino e informação segundo o protocolo do serviço.</td>
+          <td>Recolha estruturada de enfermagem e MFR, definida no protocolo.</td>
+          <td>Registo oficial, com texto gerado pela aplicação.</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>7 · Bloco operatório <span class="pill">extra</span></td>
+          <td>—</td>
+          <td>Cada interveniente — cirurgião, anestesiologia, enfermagem — vê a informação estruturada do protocolo relevante para o seu contexto.</td>
+          <td>Registos oficiais do bloco, como hoje.</td>
+          <td>Sistemas do bloco, como hoje.</td>
+        </tr>
+        <tr>
+          <td>8 · Reabilitação <span class="pill">extra</span></td>
+          <td>Programa de reabilitação claro, com fases e objetivos definidos no protocolo.</td>
+          <td>Protocolo de reabilitação estruturado, igual para toda a equipa.</td>
+          <td>Registo oficial das sessões, como hoje.</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>9 · Seguimento e alta <span class="pill ok">núcleo</span></td>
+          <td>PROMs pós-operatórios às 2 semanas, 6 semanas, 6 meses e 12 meses — o resultado é medido, não presumido.</td>
+          <td>Registos estruturados nas consultas pós-operatórias; alta para o médico de família com carta estruturada gerada pela aplicação.</td>
+          <td>Carta de alta e registos no circuito oficial.</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--ink-muted);"><span class="pill ok">núcleo</span> recolha de PROMs e registo estruturado — a razão de ser da aplicação · <span class="pill">extra</span> operacionalização dos protocolos aprovados do serviço sobre a mesma informação, sem recolha adicional.</p>
   </div>
 </section>
 
 <!-- ============ TÉCNICO / DTI ============ -->
 <section id="tecnico">
   <div class="wrap">
-    <p class="sec-eyebrow">05 · Arquitetura e integrações</p>
+    <p class="sec-eyebrow">06 · Arquitetura e integrações</p>
     <h2>Preparado para correr onde o hospital decidir</h2>
     <p>A aplicação é <strong>contentorizada e agnóstica à infraestrutura</strong>: corre integralmente em Docker numa única máquina virtual. A decisão de alojamento — datacenter da ULSM (on-prem) ou serviço gerido pela CPS Concept com DPA — fica em aberto para avaliação conjunta com a DTI, sem alterar a aplicação.</p>
 
@@ -550,10 +644,12 @@
       <div class="layer-body">
         <ul>
           <li><strong>Serviços:</strong> aplicação web + API, PostgreSQL 16, Redis (filas de tarefas), MinIO (documentos/imagens), geração de documentos — tudo em contentores numa rede interna Docker, sem portas publicadas além do proxy.</li>
-          <li><strong>Autenticação de profissionais:</strong> contas nominais com <em>hashing</em> <code>argon2id</code>, sessões JWT de 15 minutos, perfis de acesso (RBAC) por função clínica e filtragem por unidade na camada de dados. Integração futura com diretório institucional (LDAP/AD) é possível.</li>
+          <li><strong>Autenticação de profissionais:</strong> contas nominais com <em>hashing</em> <code>argon2id</code>, sessões JWT de 15 minutos, perfis de acesso (RBAC) por função clínica e filtragem por unidade na camada de dados. Contas criadas <strong>apenas por convite</strong>, com aprovação prévia — sem auto-registo. Integração futura com diretório institucional (LDAP/AD) é possível.</li>
           <li><strong>Acesso dos doentes:</strong> ligações seguras de uso único (PROMs e portal), sem palavra-passe.</li>
-          <li><strong>Auditoria:</strong> registo imutável de todos os acessos e alterações (quem, o quê, quando, de onde, antes/depois), retenção 10 anos.</li>
-          <li><strong>Encriptação:</strong> <code>AES-256-GCM</code> campo a campo nos dados pessoais e de saúde; pesquisa por índices cegos (<code>HMAC-SHA256</code>); chaves fora da base de dados. <code>TLS 1.3</code> em trânsito.</li>
+          <li><strong>Isolamento por organização:</strong> imposto na camada de dados em todas as consultas e verificado por testes automáticos — qualquer tentativa de acesso a dados de outra organização responde como se o registo não existisse (<code>404</code>).</li>
+          <li><strong>Auditoria:</strong> registo imutável de leituras e escritas (quem, o quê, quando, de onde, e o que mudou — referido por identificadores, nunca por dados pessoais de doentes), retenção 10 anos.</li>
+          <li><strong>Encriptação:</strong> <code>AES-256-GCM</code> campo a campo nos dados pessoais e de saúde; pesquisa por índices cegos (<code>HMAC-SHA256</code>) — pesquisar sem expor os dados; chaves fora da base de dados. <code>TLS 1.3</code> em trânsito.</li>
+          <li><strong>Estado:</strong> estas medidas estão implementadas e cobertas por testes automáticos que correm a cada alteração do software — não são compromissos futuros.</li>
           <li><strong>Cópias de segurança:</strong> diárias, com cópia offline cifrada e <strong>teste de restauro mensal obrigatório</strong>. RPO 24 h, RTO 4 h.</li>
         </ul>
       </div>
@@ -577,15 +673,15 @@
 <!-- ============ PROTEÇÃO DE DADOS ============ -->
 <section id="dados">
   <div class="wrap">
-    <p class="sec-eyebrow">06 · Proteção de dados</p>
+    <p class="sec-eyebrow">07 · Proteção de dados</p>
     <h2>Desenhado com a proteção de dados primeiro — e revisto com ela</h2>
-    <p>Antes de existir qualquer dado real, o projeto produziu a avaliação de impacto (AIPD/DPIA), o registo de atividades (ROPA), políticas de retenção, procedimentos de violação de dados e de direitos dos titulares — tudo com <strong>revisão jurídica externa</strong>. Na adoção institucional, a documentação será formalizada com a ULSM como responsável pelo tratamento, em articulação com a equipa de proteção de dados do hospital.</p>
+    <p>Antes de existir qualquer dado real, o projeto produziu a avaliação de impacto (AIPD/DPIA), o registo de atividades (ROPA), políticas de retenção, procedimentos de violação de dados e de direitos dos titulares — tudo com <strong>revisão jurídica externa</strong>. As medidas técnicas descritas abaixo <strong>estão implementadas e são verificadas por testes automáticos</strong> — não são compromissos futuros. Na adoção institucional, a documentação será formalizada com a ULSM como responsável pelo tratamento, em articulação com a equipa de proteção de dados do hospital.</p>
 
     <div class="cards3">
       <div class="glass card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7C8 4.8 9.8 3 12 3C14.2 3 16 4.8 16 7V10"/><circle cx="12" cy="15" r="1.6"/></svg></div>
         <h3>Segurança técnica</h3>
-        <p>Encriptação <span class="mono">AES-256-GCM</span> campo a campo, <span class="mono">TLS 1.3</span>, acessos por perfil e por unidade, auditoria imutável de 10 anos, backups testados mensalmente.</p>
+        <p>Encriptação <span class="mono">AES-256-GCM</span> campo a campo com pesquisa por índices cegos, <span class="mono">TLS 1.3</span>, acessos por perfil e por unidade, isolamento por organização verificado por testes automáticos, contas apenas por convite com aprovação, auditoria imutável de 10 anos sem dados pessoais, backups cifrados testados mensalmente.</p>
       </div>
       <div class="glass card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4.5 6V11C4.5 15.5 7.5 19.5 12 21C16.5 19.5 19.5 15.5 19.5 11V6L12 3Z"/><path d="M9.5 12L11.5 14L15 10"/></svg></div>
@@ -601,10 +697,44 @@
   </div>
 </section>
 
+<!-- ============ QUE DADOS SAEM ============ -->
+<section id="saida">
+  <div class="wrap">
+    <p class="sec-eyebrow">08 · Pergunta da equipa de proteção de dados</p>
+    <h2>Que dados saem da instituição?</h2>
+    <p>Resposta direta: <strong>nesta fase inicial, a comunicação para fora da instituição limita-se a dois casos</strong>, ambos desenhados para expor o mínimo indispensável — e ambos com os limites impostos tecnicamente, não por regulamento interno.</p>
+
+    <div class="grid2">
+      <div class="glass card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20C5 16.7 8.1 14.5 12 14.5C15.9 14.5 19 16.7 19 20"/></svg></div>
+        <h3>a) O utente — a sua área pessoal</h3>
+        <ul>
+          <li>Acede por ligação segura de uso único enviada para o seu contacto (sem palavra-passe, sem conta a criar)</li>
+          <li>Vê <strong>apenas os seus próprios dados</strong>: questionários e informação do seu percurso</li>
+          <li>Nenhum dado de outros doentes é alcançável a partir desta área</li>
+        </ul>
+      </div>
+      <div class="glass card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8H20V19C20 20.1 19.1 21 18 21H6C4.9 21 4 20.1 4 19V8Z"/><path d="M8 8V6C8 4.9 8.9 4 10 4H14C15.1 4 16 4.9 16 6V8"/></svg></div>
+        <h3>b) Delegados comerciais — só agendamentos com o seu material</h3>
+        <ul>
+          <li>Veem <strong>somente</strong>: data, hora, número de processo <strong>incompleto</strong> (pseudonimizado) e o material a preparar</li>
+          <li><strong>Nunca o nome. Nunca dados clínicos.</strong></li>
+          <li>Cada fornecedor vê apenas os agendamentos com o seu próprio material — limite imposto tecnicamente na camada de dados e verificado por testes automáticos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout commit">
+      <strong>Mais nada sai.</strong> A aplicação não recorre a serviços externos: sem CDNs, sem análises de terceiros — tudo é servido pela própria instalação (<em>self-hosted</em>). As cópias de segurança são cifradas. Qualquer alargamento futuro destas comunicações será apresentado previamente à equipa de proteção de dados do hospital.
+    </div>
+  </div>
+</section>
+
 <!-- ============ TRANSPARÊNCIA ============ -->
 <section id="transparencia">
   <div class="wrap">
-    <p class="sec-eyebrow">07 · Transparência</p>
+    <p class="sec-eyebrow">09 · Transparência</p>
     <h2>Declaração de interesses e processo de decisão</h2>
     <p>O proponente, Dr. João Pedro Campos, é simultaneamente médico da Equipa de Joelho do HPH e sócio-gerente da CPS Concept LDA, que desenvolve o UBNIC. Este facto é declarado desde o início e determina o desenho do processo:</p>
     <div class="glass card" style="max-width:760px;">
@@ -621,7 +751,7 @@
 <!-- ============ EQUIPA ============ -->
 <section id="equipa">
   <div class="wrap">
-    <p class="sec-eyebrow">08 · Equipa</p>
+    <p class="sec-eyebrow">10 · Equipa</p>
     <h2>Equipa de Joelho — Serviço de Ortopedia e Traumatologia, HPH</h2>
     <div class="team">
       <div class="glass member">
