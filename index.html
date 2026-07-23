@@ -339,7 +339,9 @@
   .pres-toggle[aria-checked="true"] .pt-slides { color: var(--color-primary); }
   .pres-toggle[aria-checked="false"] .pt-doc { color: var(--color-primary); }
   .pt-label { white-space: nowrap; }
-  @media (max-width: 640px) { .pt-label { display: none; } }
+  /* Modo apresentação (slides de ecrã inteiro) não se adequa a telemóvel —
+     ocultar o switch nesses ecrãs. */
+  @media (max-width: 640px) { .pres-toggle { display: none; } }
 
   /* ---------- Modo apresentação (slides) ---------- */
   body.present { overflow: hidden; }
