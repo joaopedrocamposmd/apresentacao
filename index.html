@@ -339,16 +339,10 @@
   <div class="wrap">
     <div class="bar" id="tocbar">
       <a href="#valor">Porquê</a>
-      <a href="#agora">Porquê agora</a>
-      <a href="#modelo">Modelo de integração</a>
-      <a href="#piloto">Fase-piloto</a>
+      <a href="#modelo">Modelo e piloto</a>
       <a href="#plataforma">Plataforma</a>
-      <a href="#percurso">Percurso do utente</a>
-      <a href="#tecnico">Arquitetura e integrações</a>
-      <a href="#dados">Proteção de dados</a>
-      <a href="#saida">Saída de dados</a>
-      <a href="#transparencia">Transparência</a>
-      <a href="#equipa">Equipa</a>
+      <a href="#tecnico">Arquitetura e dados</a>
+      <a href="#transparencia">Transparência e equipa</a>
     </div>
   </div>
 </nav>
@@ -410,7 +404,7 @@
 <!-- ============ PORQUÊ AGORA ============ -->
 <section id="agora">
   <div class="wrap">
-    <p class="sec-eyebrow">02 · Porquê agora</p>
+    <p class="sec-eyebrow">01 · Porquê agora</p>
     <h2>Sete razões para começar agora</h2>
     <p>A medição sistemática de resultados é a direção explícita da regulação europeia de dados de saúde, dos indicadores internacionais e da evolução dos modelos de financiamento. As razões para começar agora, e não mais tarde:</p>
 
@@ -495,7 +489,7 @@
 <!-- ============ MODELO ============ -->
 <section id="modelo">
   <div class="wrap">
-    <p class="sec-eyebrow">03 · Modelo de integração</p>
+    <p class="sec-eyebrow">02 · Modelo de integração</p>
     <h2>Uma ferramenta do hospital, com os dados sob controlo do hospital</h2>
     <p>O UBNIC funciona no mesmo enquadramento dos restantes sistemas de informação do hospital: a <strong>ULS Matosinhos é a responsável pelo tratamento</strong> dos dados, define as políticas e o alojamento; a CPS Concept LDA fornece e mantém o software, como subcontratante.</p>
 
@@ -514,7 +508,7 @@
         <tr><td>Crescimento</td><td>Preparada para alargar a outras especialidades cirúrgicas e a outros hospitais</td></tr>
       </tbody>
     </table></div>
-    <p style="font-size:12.5px;color:var(--ink-muted);">* Na fase-piloto aplica-se o regime de consentimento descrito na secção 04 — Fase-piloto.</p>
+    <p style="font-size:12.5px;color:var(--ink-muted);">* Na fase-piloto aplica-se o regime de consentimento descrito na secção 02 — Fase-piloto.</p>
 
     <div class="glass arch" aria-label="Modelo de responsabilidades">
       <div class="arch-row">
@@ -532,7 +526,7 @@
 <!-- ============ PILOTO ============ -->
 <section id="piloto">
   <div class="wrap">
-    <p class="sec-eyebrow">04 · Fase-piloto</p>
+    <p class="sec-eyebrow">02 · Fase-piloto</p>
     <h2>12–24 meses na Equipa de Joelho, com avaliação objetiva</h2>
     <p>Um piloto circunscrito aos utentes da Equipa de Joelho do Serviço de Ortopedia, formalizado por <strong>protocolo de colaboração</strong> entre a ULS Matosinhos e a CPS Concept LDA, com critérios de avaliação definidos à partida e relatório final ao Conselho de Administração.</p>
 
@@ -569,7 +563,7 @@
 <!-- ============ PLATAFORMA ============ -->
 <section id="plataforma">
   <div class="wrap">
-    <p class="sec-eyebrow">05 · Plataforma</p>
+    <p class="sec-eyebrow">03 · Plataforma</p>
     <h2>No mesmo registo, o percurso cirúrgico completo</h2>
     <p>Para medir PROMs, a aplicação acompanha necessariamente as consultas, a inscrição cirúrgica (LIC) e as cirurgias. Com esses dados no sistema, o mesmo registo sustenta — sem recolha adicional — um conjunto de capacidades de gestão do percurso cirúrgico. Estas capacidades <strong>estão construídas</strong> e podem ser demonstradas na aplicação atual — não dependem de desenvolvimento futuro.</p>
 
@@ -613,7 +607,7 @@
 <!-- ============ PERCURSO DO UTENTE ============ -->
 <section id="percurso">
   <div class="wrap">
-    <p class="sec-eyebrow">06 · Percurso do utente</p>
+    <p class="sec-eyebrow">03 · Percurso do utente</p>
     <h2>Da efetivação da consulta à alta — quem faz o quê, e onde</h2>
     <p>O quadro seguinte percorre o percurso típico de um utente cirúrgico (ex.: prótese total do joelho) e mostra, em cada momento, o papel do <strong>utente</strong>, dos <strong>profissionais</strong>, do <strong>SClínico</strong> e das <strong>restantes aplicações do hospital</strong>. O núcleo da aplicação é a recolha sistemática de PROMs e o registo estruturado <span class="pill ok">núcleo</span>; sobre essa mesma informação, a aplicação operacionaliza os protocolos aprovados do serviço <span class="pill">extra</span>. O SClínico mantém-se sempre o registo clínico oficial — a aplicação não o substitui, gera texto estruturado para nele ser colado.</p>
 
@@ -698,7 +692,7 @@
 <!-- ============ TÉCNICO / DTI ============ -->
 <section id="tecnico">
   <div class="wrap">
-    <p class="sec-eyebrow">07 · Arquitetura e integrações</p>
+    <p class="sec-eyebrow">04 · Arquitetura e integrações</p>
     <h2>Preparado para funcionar onde o hospital decidir</h2>
     <p>A aplicação é <strong>contentorizada e agnóstica à infraestrutura</strong>: corre integralmente em Docker numa única máquina virtual. A decisão de alojamento — datacenter da ULSM (on-prem) ou serviço gerido pela CPS Concept com DPA — fica em aberto para avaliação conjunta com a DTI, sem alterar a aplicação.</p>
 
@@ -757,9 +751,9 @@
 <!-- ============ PROTEÇÃO DE DADOS ============ -->
 <section id="dados">
   <div class="wrap">
-    <p class="sec-eyebrow">08 · Proteção de dados</p>
-    <h2>Proteção de dados desde a conceção, com revisão jurídica externa</h2>
-    <p>Antes de existir qualquer dado real, o projeto produziu a avaliação de impacto (AIPD/DPIA), o registo de atividades (ROPA), políticas de retenção, procedimentos de violação de dados e de direitos dos titulares — tudo com <strong>revisão jurídica externa</strong>. As medidas técnicas descritas abaixo <strong>estão implementadas e são verificadas por testes automáticos</strong> — não são compromissos futuros. Na adoção institucional, a documentação será formalizada com a ULSM como responsável pelo tratamento, em articulação com a equipa de proteção de dados do hospital.</p>
+    <p class="sec-eyebrow">04 · Proteção de dados</p>
+    <h2>Proteção de dados desde a conceção</h2>
+    <p>As medidas técnicas descritas abaixo <strong>estão implementadas e são verificadas por testes automáticos</strong> — não são compromissos futuros. Na adoção institucional, a documentação será formalizada com a ULSM como responsável pelo tratamento, em articulação com a equipa de proteção de dados do hospital.</p>
 
     <div class="cards3">
       <div class="glass card">
@@ -770,7 +764,7 @@
       <div class="glass card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4.5 6V11C4.5 15.5 7.5 19.5 12 21C16.5 19.5 19.5 15.5 19.5 11V6L12 3Z"/><path d="M9.5 12L11.5 14L15 10"/></svg></div>
         <h3>Governança</h3>
-        <p>AIPD/DPIA e ROPA elaboradas e validadas em revisão jurídica externa; procedimentos de incidentes (notificação CNPD 72 h) e de direitos dos titulares (30 dias) formalizados; formação RGPD obrigatória da equipa antes do acesso.</p>
+        <p>AIPD/DPIA e ROPA elaboradas; procedimentos de incidentes (notificação CNPD 72 h) e de direitos dos titulares (30 dias) formalizados; formação RGPD obrigatória da equipa antes do acesso.</p>
       </div>
       <div class="glass card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3V12L16 14"/><circle cx="12" cy="12" r="9"/></svg></div>
@@ -784,7 +778,7 @@
 <!-- ============ QUE DADOS SAEM ============ -->
 <section id="saida">
   <div class="wrap">
-    <p class="sec-eyebrow">09 · Saída de dados</p>
+    <p class="sec-eyebrow">04 · Saída de dados</p>
     <h2>Que dados saem da instituição?</h2>
     <p>Resposta direta: <strong>nesta fase inicial, a comunicação para fora da instituição limita-se a dois casos</strong>, ambos desenhados para expor o mínimo indispensável — e ambos com os limites impostos tecnicamente, não por regulamento interno.</p>
 
@@ -793,7 +787,7 @@
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20C5 16.7 8.1 14.5 12 14.5C15.9 14.5 19 16.7 19 20"/></svg></div>
         <h3>a) O utente — a sua área pessoal</h3>
         <ul>
-          <li>Acede por ligação segura de uso único enviada para o seu contacto (sem palavra-passe, sem conta a criar)</li>
+          <li>Acede quando quiser — identifica-se e recebe no seu contacto uma ligação segura de uso único, sem palavra-passe e sem conta permanente; recebe também ligações diretas para responder aos PROMs e para a consulta</li>
           <li>Vê <strong>apenas os seus próprios dados</strong>: questionários e informação do seu percurso</li>
           <li>Nenhum dado de outros utentes é alcançável a partir desta área</li>
         </ul>
@@ -818,14 +812,14 @@
 <!-- ============ TRANSPARÊNCIA ============ -->
 <section id="transparencia">
   <div class="wrap">
-    <p class="sec-eyebrow">10 · Transparência</p>
+    <p class="sec-eyebrow">05 · Transparência</p>
     <h2>Declaração de interesses e processo de decisão</h2>
     <p>O proponente, Dr. João Pedro Campos, é simultaneamente médico da Equipa de Joelho do HPH e sócio-gerente da CPS Concept LDA, que desenvolve o UBNIC. Este facto é declarado desde o início e determina o desenho do processo:</p>
     <div class="glass card" style="max-width:760px;">
       <ul>
         <li><strong>Declaração de interesses formal</strong> apresentada ao Conselho de Administração juntamente com a proposta</li>
         <li>A avaliação e a decisão de adoção são <strong>integralmente do lado do hospital</strong> (CA, DTI, equipa de proteção de dados), sem participação do proponente nessa qualidade</li>
-        <li>Piloto <strong>sem custos</strong>, nas condições e com os critérios de avaliação descritos na secção 04</li>
+        <li>Piloto <strong>sem custos</strong>, nas condições e com os critérios de avaliação descritos na secção 02</li>
         <li>Eventual aquisição posterior segue o <strong>procedimento de contratação pública aplicável</strong></li>
       </ul>
     </div>
@@ -835,7 +829,7 @@
 <!-- ============ EQUIPA ============ -->
 <section id="equipa">
   <div class="wrap">
-    <p class="sec-eyebrow">11 · Equipa</p>
+    <p class="sec-eyebrow">05 · Equipa</p>
     <h2>Equipa de Joelho — Serviço de Ortopedia e Traumatologia, HPH</h2>
     <div class="team">
       <div class="glass member">
