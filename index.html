@@ -344,8 +344,10 @@
   /* ---------- Modo apresentação (slides) ---------- */
   body.present { overflow: hidden; }
   body.present nav.toc, body.present footer { display: none !important; }
-  body.present header.hero,
-  body.present > section {
+  /* Uma secção pode conter várias unidades [data-slide]; nesse caso a secção
+     é só um contentor transparente (display:contents) e cada parte é um slide. */
+  body.present .deck-split { display: contents; }
+  body.present .deck-slide {
     position: fixed; inset: 0; margin: 0;
     padding: 0; z-index: 30;
     background: var(--bg);
@@ -354,18 +356,16 @@
       radial-gradient(circle at 90% 100%, rgba(44,62,80,0.08), transparent 45%);
     overflow-y: auto; display: none;
   }
-  body.present header.hero.deck-active,
-  body.present > section.deck-active {
+  body.present .deck-slide.deck-active {
     display: flex; flex-direction: column; justify-content: safe center;
     animation: slidein .32s ease both;
   }
   @keyframes slidein { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
-  body.present header.hero .wrap,
-  body.present > section .wrap { padding-top: 58px; padding-bottom: 92px; margin: auto; width: 100%; }
-  body.present > section { scroll-margin-top: 0; }
+  body.present .deck-slide .wrap { padding-top: 58px; padding-bottom: 92px; margin: auto; width: 100%; }
+  body.present .deck-slide { scroll-margin-top: 0; }
   /* tipografia ligeiramente maior para leitura à distância */
-  body.present > section h2 { font-size: clamp(24px, 3.2vw, 38px); }
-  body.present header.hero h1 { font-size: clamp(30px, 4.6vw, 56px); }
+  body.present .deck-slide h2 { font-size: clamp(24px, 3.2vw, 38px); }
+  body.present .deck-slide h1 { font-size: clamp(30px, 4.6vw, 56px); }
 
   /* barra de navegação do deck */
   #deckbar {
@@ -510,6 +510,7 @@
 
 <!-- ============ PORQUÊ AGORA ============ -->
 <section id="agora">
+  <div data-slide>
   <div class="wrap">
     <p class="sec-eyebrow">01 · Porquê agora</p>
     <h2>Porque começar agora, e não mais tarde</h2>
@@ -546,7 +547,14 @@
       </div>
     </div>
 
-    <p style="margin-top:26px;">Dois planos merecem uma nota mais desenvolvida — a investigação que passa a ser possível e o enquadramento regulatório europeu:</p>
+  </div>
+  </div>
+
+  <div data-slide>
+  <div class="wrap">
+    <p class="sec-eyebrow">01 · Porquê agora — em detalhe</p>
+    <h2>Ciência e regulação</h2>
+    <p>A investigação que passa a ser possível e o enquadramento regulatório europeu:</p>
 
     <div class="grid2">
       <div class="glass card">
@@ -592,6 +600,7 @@
         </ul>
       </div>
     </details>
+  </div>
   </div>
 </section>
 
@@ -1003,9 +1012,25 @@
 
 /* ---------- Modo apresentação (slides) ---------- */
 (function () {
-  var slides = Array.prototype.slice.call(
+  // Unidades-topo: capa + cada secção. Uma secção com filhos [data-slide]
+  // reparte-se em vários slides (a secção vira contentor transparente).
+  var topBlocks = Array.prototype.slice.call(
     document.querySelectorAll('header.hero, body > section')
   );
+  var slides = [];
+  topBlocks.forEach(function (block) {
+    var parts = block.querySelectorAll(':scope > [data-slide]');
+    if (parts.length) {
+      block.classList.add('deck-split');
+      Array.prototype.forEach.call(parts, function (p) {
+        p.classList.add('deck-slide');
+        slides.push(p);
+      });
+    } else {
+      block.classList.add('deck-slide');
+      slides.push(block);
+    }
+  });
   var toggle = document.getElementById('presToggle');
   var bar = document.getElementById('deckbar');
   var prevBtn = document.getElementById('deckPrev');
@@ -1028,10 +1053,16 @@
   }
   function go(n) { idx = Math.max(0, Math.min(slides.length - 1, n)); render(); }
 
-  // Ao entrar, arranca no slide correspondente à secção mais próxima do scroll atual.
+  // Ao entrar, arranca no slide mais próximo do scroll atual. Usa a posição
+  // ABSOLUTA na página (getBoundingClientRect + scrollY) — os slides [data-slide]
+  // têm offsetTop relativo à secção, logo offsetTop não serve aqui.
   function nearestToScroll() {
     var pos = window.scrollY + 140, found = 0;
-    slides.forEach(function (s, i) { if (s && s.offsetTop <= pos) found = i; });
+    slides.forEach(function (s, i) {
+      if (!s) return;
+      var top = s.getBoundingClientRect().top + window.scrollY;
+      if (top <= pos) found = i;
+    });
     return found;
   }
   function setMode(next, startIdx) {
